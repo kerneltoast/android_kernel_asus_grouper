@@ -114,6 +114,7 @@ void tegra_dc_release_dc_out(struct tegra_dc *dc)
 			dc->stats.underflows_c);                        \
 	} while (0)
 
+#ifdef CONFIG_DEBUG_FS
 static void _dump_regs(struct tegra_dc *dc, void *data,
 		       void (* print)(void *data, const char *str))
 {
@@ -276,6 +277,7 @@ static void _dump_regs(struct tegra_dc *dc, void *data,
 	tegra_dc_release_dc_out(dc);
 	mutex_unlock(&dc->lock);
 }
+#endif
 
 #undef DUMP_REG
 
