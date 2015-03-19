@@ -2083,6 +2083,7 @@ static int tegra_dc_resume(struct nvhost_device *ndev)
 
 static void tegra_dc_shutdown(struct nvhost_device *ndev)
 {
+#ifndef CONFIG_MACH_GROUPER
 	struct tegra_dc *dc = nvhost_get_drvdata(ndev);
 
 	if (!dc || !dc->enabled)
@@ -2090,6 +2091,7 @@ static void tegra_dc_shutdown(struct nvhost_device *ndev)
 
 	tegra_dc_blank(dc);
 	tegra_dc_disable(dc);
+#endif
 }
 
 extern int suspend_set(const char *val, struct kernel_param *kp)
